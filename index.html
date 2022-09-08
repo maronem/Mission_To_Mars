@@ -15,43 +15,9 @@
       <!-- Add Jumbotron to Header -->
       <div class="jumbotron text-center">
         <h1>Mission to Mars</h1>
+        <h3>Created by Michael Marone</h3>
         <!-- Add a button to activate scraping script -->
-        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
-      </div>
-
-      <!-- Add section for Mars News -->
-      <div class="row" id="mars-news">
-        <div class="col-md-12">
-          <div class="media">
-            <div class="media-body">
-              <h2>Latest Mars News</h2>
-              <h4 class="media-heading">{{ mars.news_title }}</h4>
-              <p>{{ mars.news_paragraph }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Section for Featured Image and Facts table -->
-      <div class="row" id="mars-featured-image">
-        <div class="col-md-8">
-          <h2>Featured Mars Image</h2>
-
-          <!-- if images is False/None/non-existent, then default to error message -->
-          <img
-            src="{{mars.featured_image | default('static/images/error.png', true) }}"
-            class="img-responsive"
-            alt="Responsive image"
-          />
-        </div>
-
-        <div class="col-md-4">
-          <!-- Mars Facts -->
-          <div class="row" id="mars-facts">
-            <h4>Mars Facts</h4>
-            {{ mars.facts | safe }}
-          </div>
-        </div>
+        <p><a class="btn btn-success btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
       </div>
 
       <!-- Section for Mars Hemispheres -->
@@ -59,13 +25,48 @@
         <div class="page-header">
           <h2 class="text-center">Mars Hemispheres</h2>
         </div>
-
+      <!-- Add section for Mars News -->
+      <div class="row" id="mars-news">
+        <div class="col-md-12">
+          <div class="media">
+            <div class="media-body">
+              <h2><strong><mark>Latest Mars News</mark></strong></h2>
+              <h4 class="media-heading">{{ mars.news_title }}</h4>
+              <p>{{ mars.news_paragraph }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Section for Featured Image and Facts table -->
+      <div class="row" id="mars-featured-image">
+        <div class="col-md-8">
+          <h2><strong>Featured Mars Image</strong></h2>
+ 
+          <!-- if images is False/None/non-existent, then default to error message -->
+          <img
+            src="{{mars.featured_image | default('static/images/error.png', true) }}"
+            class="img-responsive"
+            alt="Responsive image"
+          />
+        </div>
+ 
+        <div class="col-md-4">
+          <!-- Mars Facts -->
+          <div class="row" id="mars-facts">
+            <h4><strong>Mars Facts</strong></h4>
+            {{ mars.facts | safe }}
+          </div>
+        </div>
+      </div>
+      
+      <h3><strong>Mars Hemisphere Images</strong></h3>
         {% for hemisphere in mars.hemispheres %}
         <div class="col-md-6">
           <div class="thumbnail">
             <img 
               src="{{hemisphere.img_url | default('static/images/error.png', true)}}" 
-              class="img-responsive"
+              class="img-circle"
               alt="Responsive image"
             />
             <div class="caption">
